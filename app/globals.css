@@ -1,26 +1,351 @@
 @import "tailwindcss";
 
+/* Theme is driven by `data-theme` on <html>, applied before first paint by the
+   inline script in app/layout.tsx (see Next docs: preventing-flash-before-hydration). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  --background: #f5f5fb;
+  --surface: #ffffff;
+  --surface-2: #ebebf4;
+  --foreground: #13131d;
+  --muted: #5a5a72;
+  --border: rgb(19 19 29 / 0.1);
+  --border-strong: rgb(19 19 29 / 0.18);
+  --ring: rgb(109 40 217 / 0.45);
+
+  --brand-1: #6d28d9;
+  --brand-2: #0891b2;
+  --brand-3: #c2410c;
+  --brand-4: #be185d;
+  --brand-5: #15803d;
+
+  --chart-1: #6d28d9;
+  --chart-2: #0891b2;
+  --chart-3: #ea580c;
+  --chart-4: #be185d;
+  --chart-5: #15803d;
+
+  --grid: rgb(19 19 29 / 0.08);
+  --glow-1: rgb(109 40 217 / 0.22);
+  --glow-2: rgb(8 145 178 / 0.18);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #08080f;
+  --surface: #11111c;
+  --surface-2: #191927;
+  --foreground: #f1f1f8;
+  --muted: #9a9ab4;
+  --border: rgb(255 255 255 / 0.1);
+  --border-strong: rgb(255 255 255 / 0.2);
+  --ring: rgb(167 139 250 / 0.55);
+
+  --brand-1: #a78bfa;
+  --brand-2: #22d3ee;
+  --brand-3: #fbbf24;
+  --brand-4: #f472b6;
+  --brand-5: #4ade80;
+
+  --chart-1: #a78bfa;
+  --chart-2: #22d3ee;
+  --chart-3: #fbbf24;
+  --chart-4: #f472b6;
+  --chart-5: #4ade80;
+
+  --grid: rgb(255 255 255 / 0.09);
+  --glow-1: rgb(124 58 237 / 0.35);
+  --glow-2: rgb(34 211 238 / 0.22);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-brand-1: var(--brand-1);
+  --color-brand-2: var(--brand-2);
+  --color-brand-3: var(--brand-3);
+  --color-brand-4: var(--brand-4);
+  --color-brand-5: var(--brand-5);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-sans:
+    var(--font-vazirmatn), ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-pulse-ring: pulse-ring 3.4s ease-out infinite;
+  --animate-rise: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(0.85);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    transition:
+      background-color 0.35s ease,
+      color 0.35s ease;
+  }
+
+  ::selection {
+    background: var(--brand-1);
+    color: var(--background);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  .card {
+    background-color: color-mix(in oklab, var(--surface) 88%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    backdrop-filter: blur(10px);
+    transition:
+      border-color 0.25s ease,
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .card-hover:hover {
+    border-color: color-mix(in oklab, var(--brand-1) 45%, var(--border));
+    transform: translateY(-4px);
+    box-shadow: 0 22px 45px -28px var(--glow-1);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    padding: 0.75rem 1.4rem;
+    border: 1px solid transparent;
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .btn-primary {
+    background-image: linear-gradient(
+      120deg,
+      var(--brand-1),
+      color-mix(in oklab, var(--brand-4) 70%, var(--brand-1))
+    );
+    color: #ffffff;
+    box-shadow: 0 16px 30px -18px var(--glow-1);
+  }
+
+  [data-theme="dark"] .btn-primary {
+    color: #0a0a12;
+  }
+
+  .btn-ghost {
+    border-color: var(--border-strong);
+    color: var(--foreground);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--brand-1);
+    color: var(--brand-1);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background-color: color-mix(in oklab, var(--surface) 70%, transparent);
+    padding: 0.35rem 0.85rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand-1),
+      var(--brand-2) 55%,
+      var(--brand-4)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .grid-backdrop {
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      #000 40%,
+      transparent 100%
+    );
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .reveal.is-visible {
+    animation: var(--animate-rise);
+  }
+
+  /* Theme switch: every visual is derived from `data-theme` in CSS, so the
+     markup React renders is identical for both themes. */
+  .theme-toggle-icon {
+    display: grid;
+    place-items: center;
+    width: 1.6rem;
+    color: var(--muted);
+  }
+
+  .theme-toggle-sun {
+    justify-self: start;
+  }
+
+  .theme-toggle-moon {
+    justify-self: end;
+    margin-inline-start: auto;
+  }
+
+  .theme-toggle-knob {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    border-radius: 999px;
+    background-color: var(--surface);
+    box-shadow: 0 2px 8px -2px rgb(0 0 0 / 0.35);
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .theme-toggle-sun,
+  .theme-toggle-moon {
+    position: relative;
+    z-index: 1;
+  }
+
+  [data-theme="dark"] .theme-toggle-knob {
+    transform: translateX(2.1rem);
+  }
+
+  .theme-toggle-sun {
+    color: var(--brand-3);
+  }
+
+  [data-theme="dark"] .theme-toggle-sun {
+    color: var(--muted);
+  }
+
+  [data-theme="dark"] .theme-toggle-moon {
+    color: var(--brand-1);
+  }
 }
