@@ -1,24 +1,13 @@
 import type { NextConfig } from "next";
 
+const basePath = "/PH";
+
 const nextConfig: NextConfig = {
-  /* config options here */
-  output: "export",          // خروجی استاتیک در پوشه out
+  output: "export",
   images: { unoptimized: true },
   trailingSlash: true,
-
-  experimental: {
-    agentFeedback: true,
-  },
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
-      },
-    },
-  },
+  basePath,
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
 
 export default nextConfig;
