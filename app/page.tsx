@@ -75,7 +75,7 @@ export default function Home() {
               <h1 className="mt-6 text-4xl font-black leading-[1.25] tracking-tight sm:text-5xl lg:text-6xl">
                 برندی بسازید که
                 <br />
-                <span className="gradient-text">دیده شود، به یاد بماند</span>
+                <span className="accent-text">دیده شود، به یاد بماند</span>
                 <br />
                 و بفروشد.
               </h1>
@@ -136,7 +136,7 @@ export default function Home() {
             eyebrow="خدمات ما"
             title={
               <>
-                همه‌چیز برای <span className="gradient-text">رشد برند شما</span>، زیر یک سقف
+                همه‌چیز برای <span className="accent-text">رشد برند شما</span>، زیر یک سقف
               </>
             }
             text="چهار تخصص مکمل که با هم کار می‌کنند؛ از اولین ایده تا آخرین پیکسل و پست."
@@ -169,7 +169,7 @@ export default function Home() {
             <Reveal>
               <span className="eyebrow">چرا پویان هاب</span>
               <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">
-                تیمی متوازن، <span className="gradient-text">بدون نقطه کور</span>
+                تیمی متوازن، <span className="accent-text">بدون نقطه کور</span>
               </h2>
               <p className="mt-4 leading-8 text-muted">
                 بیشتر آژانس‌ها در یک حوزه قوی‌اند. ما استراتژیست، طراح، توسعه‌دهنده و تولیدکننده محتوا را در یک تیم جمع
@@ -191,7 +191,7 @@ export default function Home() {
         <section id="process" className="shell scroll-mt-24 py-20 sm:py-28">
           <SectionHeading eyebrow="فرآیند کار" title="از ایده تا رشد، در چهار گام شفاف" />
           <ol className="relative grid gap-5 md:grid-cols-4">
-            <span aria-hidden className="absolute top-8 right-[12%] left-[12%] hidden h-px bg-gradient-to-l from-brand-1 via-brand-2 to-brand-4 opacity-40 md:block" />
+            <span aria-hidden className="absolute top-8 right-[12%] left-[12%] hidden h-px bg-brand-1 opacity-30 md:block" />
             {process.map((item, index) => (
               <Reveal key={item.step} as="li" delay={index * 110} className="relative">
                 <div className="relative z-10 mx-auto mb-5 grid h-16 w-16 place-items-center rounded-2xl border border-border bg-background text-xl font-black text-brand-1 shadow-sm">
@@ -213,7 +213,7 @@ export default function Home() {
               eyebrow="نتایج قابل‌اندازه‌گیری"
               title={
                 <>
-                  ما فقط زیبا نمی‌سازیم؛ <span className="gradient-text">رشد می‌سازیم</span>
+                  ما فقط زیبا نمی‌سازیم؛ <span className="accent-text">رشد می‌سازیم</span>
                 </>
               }
               text="میانگین دسترسی ارگانیک ماهانه (هزار نفر) برای مشتریانی که همکاری را از فروردین آغاز کردند."
@@ -292,7 +292,7 @@ export default function Home() {
             <Reveal>
               <span className="eyebrow">شروع همکاری</span>
               <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">
-                بیایید برند بعدی را <span className="gradient-text">با هم</span> بسازیم
+                بیایید برند بعدی را <span className="accent-text">با هم</span> بسازیم
               </h2>
               <p className="mt-4 leading-8 text-muted">
                 فرم را پر کنید تا یک جلسه مشاوره رایگان ۳۰ دقیقه‌ای هماهنگ کنیم. بدون تعهد، فقط گفت‌وگو درباره رشد کسب‌وکار شما.

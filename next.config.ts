@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
-const basePath = "/PH";
+// GitHub Pages serves the site under /PH; `next dev` serves it from the root.
+const basePath = process.env.NODE_ENV === "production" ? "/PH" : "";
 
 const nextConfig: NextConfig = {
   output: "export",

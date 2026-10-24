@@ -14,11 +14,11 @@ export type ChartPalette = {
 };
 
 const FALLBACK_PALETTE: ChartPalette = {
-  brand: ["#6d28d9", "#0891b2", "#c2410c", "#be185d", "#15803d"],
-  series: ["#6d28d9", "#0891b2", "#ea580c", "#be185d", "#15803d"],
-  foreground: "#13131d",
-  muted: "#5a5a72",
-  grid: "rgba(19,19,29,0.08)",
+  brand: ["#c2410c", "#1b3a6b", "#d97706", "#b4400c", "#15803d"],
+  series: ["#f26b1d", "#1b3a6b", "#f59e0b", "#5b7fb5", "#15803d"],
+  foreground: "#0b1b33",
+  muted: "#556075",
+  grid: "rgba(11,27,51,0.07)",
   surface: "#ffffff",
 };
 
