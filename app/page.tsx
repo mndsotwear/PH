@@ -299,9 +299,9 @@ export default function Home() {
               </p>
               <ul className="mt-8 grid gap-4 text-sm">
                 {[
-                  ["ایمیل", "hello@pouyanhub.ir"],
-                  ["تلفن", "۰۲۱-۰۰۰۰۰۰۰۰"],
-                  ["آدرس", "تهران"],
+                  ["ایمیل", "PouyanHub@proton.me"],
+                  ["تلفن", "0902-8038063"],
+                  ["آدرس", "آبادان"],
                 ].map(([label, value]) => (
                   <li key={label} className="flex items-center justify-between rounded-xl border border-border px-4 py-3">
                     <span className="text-muted">{label}</span>
