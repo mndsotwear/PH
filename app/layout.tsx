@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { THEME_STORAGE_KEY } from "./lib/theme";
+import "./globals.css";
 
 const vazirmatn = localFont({
   src: "./fonts/Vazirmatn-Variable.woff2",
