@@ -1,4 +1,5 @@
 import Image from "next/image";
+import logo from "@/public/logo-pouyan.png";
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
@@ -22,7 +23,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       /> */}
 
       <Image
-        src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/logo-pouyan.png`}
+        src={logo}
         alt="logo"
         width={70}
         height={50}
